@@ -148,6 +148,13 @@
       "computedHash": "9e0fe437b47e9edf4f1c6c9aa48b5c1d7c3a1b896d9a83a11934c7aa8e76d345",
       "installMode": "copy"
     },
+    "sound-effects": {
+      "source": "awesome-genmedia/skills",
+      "sourceType": "github",
+      "skillPath": "sound-effects/SKILL.md",
+      "computedHash": "a2ed7172a709c4537e7d288a205bc00cb8567fb27c04b6b90c6db2422f7d7520",
+      "installMode": "copy"
+    },
     "style-sampling": {
       "source": "heygen-com/hyperframes",
       "sourceType": "github",
