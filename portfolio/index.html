@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Faith Samuel | AI content creator</title>
+<meta name="description" content="AI video, UGC and brand collaborations by Faith Samuel, an AI content creator in Lagos.">
+<script>document.documentElement.classList.add('js','closed')</script>
+<style>
+@font-face{font-family:Lexend;font-weight:100 900;font-display:swap;src:url(fonts/lexend.woff2) format("woff2")}
+:root{--cream:#FFF8EA;--pink:#FBB9E6;--yellow:#FFF36B;--blue:#B9E4F6;--ink:#4A0D20;--mute:#7A4B58;--line:rgba(74,13,32,.16);--ease:cubic-bezier(.2,.8,.2,1)}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{background:var(--cream);color:var(--ink);font-family:Lexend,"Century Gothic",Helvetica,Arial,sans-serif;font-weight:300;font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:8px}
+h1,h2,h3{font-weight:400;letter-spacing:-.045em;line-height:1;text-wrap:balance}
+h1{font-size:clamp(44px,8.6vw,92px)}
+h2{font-size:clamp(34px,5.4vw,60px)}
+h3{font-size:clamp(24px,3vw,32px);letter-spacing:-.035em}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+section{padding:56px 0;scroll-margin-top:70px}
+.head{display:grid;gap:12px;margin-bottom:28px;max-width:720px}
+.head p{color:var(--mute);font-size:17px}
+.pink{background:var(--pink)}.yellow{background:var(--yellow)}.blue{background:var(--blue)}
+.pill{display:inline-block;border:1.5px solid var(--ink);border-radius:99px;padding:4px 14px;font-size:13px;font-weight:500;line-height:1.5}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 24px;border-radius:99px;border:1.5px solid var(--ink);font-weight:500;font-size:15px;text-decoration:none;background:transparent;transition:transform .25s var(--ease),background-color .2s,color .2s}
+.btn:hover{transform:translateY(-3px)}
+.btn.dark{background:var(--ink);color:var(--cream)}
+.btn.dark:hover{background:#6B1730}
+.btn.light{background:var(--yellow)}
+
+/* reveal on scroll */
+.js .reveal{opacity:0;transform:translateY(30px);transition:opacity .8s var(--ease),transform .8s var(--ease);transition-delay:calc(var(--i,0)*90ms)}
+.js .reveal.in{opacity:1;transform:none}
+
+/* nav */
+.top{position:sticky;top:0;z-index:30;background:rgba(255,248,234,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s}
+.top.scrolled{border-color:var(--line)}
+.top .wrap{display:flex;justify-content:space-between;align-items:center;height:64px;gap:16px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:500;text-decoration:none;font-size:16px}
+.logo::before{content:"";width:16px;height:16px;border-radius:50%;background:var(--pink);border:3px solid var(--yellow);box-shadow:0 0 0 1.5px var(--ink)}
+.nav{display:flex;align-items:center;gap:28px;font-size:15px;font-weight:400}
+.nav a:not(.btn){text-decoration:none;position:relative}
+.nav a:not(.btn)::after{content:"";position:absolute;left:0;right:0;bottom:-5px;height:2px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform .3s var(--ease)}
+.nav a:not(.btn):hover::after,.nav a.here::after{transform:scaleX(1)}
+.nav .btn{padding:9px 18px;font-size:14px}
+@media(max-width:760px){.nav a:not(.btn){display:none}}
+
+/* home: folder */
+.closed .after{display:none}
+.home{position:relative;min-height:calc(100svh - 64px);padding:28px 0 40px;display:grid;align-items:center;overflow:hidden;text-align:center}
+.home .wrap{position:relative;display:grid;justify-items:center;gap:26px;width:100%}
+.home h1{font-size:clamp(32px,6vw,64px);max-width:16ch;animation:fade .9s var(--ease) both}
+.word{position:absolute;left:50%;top:54%;transform:translate(-50%,-50%);font-size:16.5vw;font-weight:600;letter-spacing:-.05em;line-height:1;color:rgba(74,13,32,.07);white-space:nowrap;pointer-events:none;user-select:none}
+.folder{position:relative;display:block;width:min(74vw,340px);aspect-ratio:34/27;margin-top:54px;border:0;background:none;padding:0;perspective:900px;animation:fade 1s .15s var(--ease) both;-webkit-tap-highlight-color:transparent}
+.f-back{position:absolute;inset:14% 0 0 0;background:#F58FD2;border:1.5px solid var(--ink);border-radius:0 22px 22px 22px}
+.f-back::before{content:"";position:absolute;left:-1.5px;bottom:100%;width:40%;height:22%;background:inherit;border:1.5px solid var(--ink);border-bottom:0;border-radius:16px 16px 0 0}
+.file{position:absolute;bottom:36%;left:var(--x);width:36%;aspect-ratio:3/4;border-radius:12px;overflow:hidden;border:1.5px solid var(--ink);background:var(--cream);transform:rotate(var(--r)) translateY(var(--y,-10%));transition:transform .8s var(--ease);animation:peek 4.5s ease-in-out infinite;animation-delay:var(--d)}
+.file img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;display:block}
+.f-front{position:absolute;left:0;right:0;bottom:0;height:62%;background:var(--yellow);border:1.5px solid var(--ink);border-radius:22px;transform-origin:bottom;transition:transform .8s var(--ease);display:grid;place-items:center;align-content:center;gap:2px}
+.f-front b{font-weight:400;font-size:clamp(24px,7vw,32px);letter-spacing:-.04em;line-height:1}
+.f-front span{font-size:13.5px}
+.folder:hover .file,.folder:focus-visible .file{--y:-24%}
+.folder.open .f-front{transform:rotateX(-42deg)}
+.folder.open .file{--y:-58%;animation:none}
+.folder.open .file:nth-child(2){--r:-16deg}.folder.open .file:nth-child(5){--r:17deg}
+.hint{font-size:14px;color:var(--mute);animation:fade .9s .4s var(--ease) both}
+.home .btn{animation:fade .9s .3s var(--ease) both}
+.btn .arr{display:inline-block;transition:transform .3s var(--ease)}
+.btn:hover .arr{transform:translateY(3px)}
+@keyframes fade{from{opacity:0;transform:translateY(18px)}}
+@keyframes peek{50%{translate:0 -7px}}
+
+/* marquee */
+.marquee{overflow:hidden;white-space:nowrap;padding:16px 0;background:var(--ink);color:var(--cream)}
+.marquee.alt{background:var(--yellow);color:var(--ink)}
+.marquee div{display:inline-flex;align-items:center;animation:mq 30s linear infinite}
+.marquee.alt div{animation-duration:44s;animation-direction:reverse}
+.marquee span{font-size:clamp(20px,2.6vw,30px);letter-spacing:-.03em;font-weight:400;padding:0 20px}
+.marquee i{font-style:normal;font-size:14px;opacity:.7}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* work: dropdown rows */
+.group{margin-top:40px}
+.group-head{margin-bottom:16px}
+.group-head p{color:var(--mute);font-size:15px;max-width:56ch;margin-top:8px}
+.proj{border-top:1.5px solid var(--ink)}
+.proj:last-child{border-bottom:1.5px solid var(--ink)}
+.acc-btn{display:grid;grid-template-columns:60px 1fr auto;gap:14px;align-items:center;width:100%;padding:14px 0;border:0;background:none;text-align:left}
+.acc-btn img{width:60px;height:60px;border-radius:14px;object-fit:cover;object-position:50% 20%;display:block;transition:transform .4s var(--ease)}
+.acc-btn:hover img{transform:scale(1.08) rotate(-3deg)}
+.p-name{display:block;font-size:clamp(19px,2.6vw,26px);letter-spacing:-.035em;line-height:1.15;font-weight:400}
+.p-kind{display:block;font-size:13.5px;color:var(--mute);margin-top:2px}
+.tog{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--ink);border-radius:99px;padding:6px 12px;font-size:13px;font-weight:500;white-space:nowrap;transition:background-color .2s}
+.tog::after{content:"";width:7px;height:7px;border-right:1.5px solid var(--ink);border-bottom:1.5px solid var(--ink);transform:translateY(-2px) rotate(45deg);transition:transform .35s var(--ease)}
+.acc-btn:hover .tog{background:var(--yellow)}
+.open>.acc-btn .tog::after,.open>.tog-row .tog::after{transform:translateY(2px) rotate(-135deg)}
+.acc-more{display:grid;grid-template-rows:1fr;transition:grid-template-rows .5s var(--ease)}
+.acc-more>div{overflow:hidden;min-height:0}
+.js .acc:not(.open)>.acc-more{grid-template-rows:0fr}
+.js .acc:not(.open)>.acc-more>div{visibility:hidden;transition:visibility 0s .5s}
+.box{border-radius:20px;padding:16px;margin:2px 0 20px;display:grid;gap:16px}
+.box img{width:100%;max-width:210px;aspect-ratio:4/5;object-fit:cover;object-position:50% 20%;border-radius:14px;display:block}
+.box h4{font-weight:500;font-size:19px;line-height:1.3;letter-spacing:-.02em}
+.box p{font-size:15px;margin-top:8px}
+.box .res{border-top:1px solid var(--line);padding-top:10px;margin-top:12px;font-size:14.5px}
+.box .res b{font-weight:500}
+.box .btn{margin-top:14px;padding:10px 20px;font-size:14px}
+@media(min-width:640px){.box{grid-template-columns:210px 1fr;align-items:center;padding:20px;gap:24px}}
+@media(max-width:420px){.acc-btn{grid-template-columns:52px 1fr auto;gap:10px}.acc-btn img{width:52px;height:52px}.tog{padding:5px 10px;font-size:12px}}
+
+/* numbers */
+.numbers{background:var(--ink);color:var(--cream)}
+.numbers .head p{color:#E9C9D3}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:28px 20px}
+.stat b{display:block;font-weight:400;font-size:clamp(46px,7.5vw,84px);letter-spacing:-.05em;line-height:1;font-variant-numeric:tabular-nums}
+.stat:nth-child(1) b{color:var(--yellow)}.stat:nth-child(2) b{color:var(--pink)}.stat:nth-child(3) b{color:var(--blue)}.stat:nth-child(4) b{color:var(--yellow)}
+.stat p{color:#E9C9D3;font-size:14.5px;margin-top:8px;max-width:22ch}
+.source{font-size:13px;color:#D3A9B6;margin-top:36px}
+@media(min-width:860px){.stats{grid-template-columns:repeat(4,1fr)}}
+
+/* cases */
+.cases{display:grid;gap:18px}
+.case{border-radius:24px;padding:24px 22px;display:grid;gap:16px;align-content:start;transition:transform .4s var(--ease)}
+.case:hover{transform:translateY(-8px)}
+.case .big{font-size:clamp(48px,6vw,64px);letter-spacing:-.05em;line-height:.9;font-weight:400}
+.case dl{display:grid;gap:12px;padding-top:6px}
+.case .tog{background:var(--cream);justify-self:start;cursor:pointer}
+.case .tog:hover{background:#fff}
+.case dt{font-size:13px;font-weight:500}
+.case dd{font-size:15px}
+.case dd strong{font-weight:500}
+@media(min-width:900px){.cases{grid-template-columns:repeat(3,1fr)}}
+
+/* process */
+.steps{display:grid;gap:18px;counter-reset:st}
+.step{position:relative;border:1.5px solid var(--ink);border-radius:24px;padding:22px;display:grid;gap:10px;align-content:start;background:var(--cream);transition:transform .4s var(--ease),background-color .3s}
+.step:hover{transform:translateY(-6px);background:#fff}
+.step::before{counter-increment:st;content:counter(st);width:46px;height:46px;border-radius:50%;display:grid;place-items:center;font-weight:500;font-size:18px;border:1.5px solid var(--ink);background:var(--yellow)}
+.step:nth-child(2)::before{background:var(--pink)}.step:nth-child(3)::before{background:var(--blue)}
+.step p{color:var(--mute);font-size:15px}
+.terms{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+@media(min-width:900px){.steps{grid-template-columns:repeat(3,1fr)}}
+
+/* audience */
+.reach{display:grid;gap:18px}
+.panel{border-radius:24px;padding:24px 22px}
+.panel h3{margin-bottom:20px}
+.bars{display:grid;gap:12px}
+.bar{display:grid;grid-template-columns:70px 1fr 42px;gap:12px;align-items:center;font-size:15px}
+.bar span{height:14px;border-radius:99px;background:var(--cream);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:99px;background:var(--ink);width:var(--w);transform-origin:left;transition:transform 1.2s var(--ease) .2s}
+.js .reveal:not(.in) .bar i{transform:scaleX(0)}
+.bar em{font-style:normal;font-weight:500;text-align:right}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:22px}
+.fact{background:var(--cream);border-radius:16px;padding:12px 14px}
+.fact b{display:block;font-weight:400;font-size:26px;letter-spacing:-.04em;line-height:1.1}
+.fact span{font-size:13px;color:var(--mute)}
+.note{font-size:14.5px;margin-top:18px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{background:var(--cream);border-radius:16px;padding:10px 16px;transition:transform .3s var(--ease)}
+.chip:hover{transform:translateY(-4px) rotate(-1.5deg)}
+.chip b{display:block;font-weight:400;font-size:21px;letter-spacing:-.03em;line-height:1.15}
+.chip span{font-size:13px;color:var(--mute)}
+@media(min-width:900px){.reach{grid-template-columns:1fr 1fr}.facts{grid-template-columns:repeat(4,1fr)}}
+
+/* work with me */
+.paths{display:grid;gap:18px}
+.path{border-radius:24px;padding:26px 22px;display:grid;gap:14px;align-content:start;transition:transform .4s var(--ease)}
+.path:hover{transform:translateY(-6px)}
+.path ul{padding-left:20px;display:grid;gap:6px;font-size:15px}
+.path .cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+@media(min-width:900px){.paths{grid-template-columns:1fr 1fr}}
+
+/* contact */
+.contact{background:var(--ink);color:var(--cream);padding-bottom:28px}
+.contact .wrap{display:grid;gap:36px}
+.contact h2{font-size:clamp(40px,6.4vw,76px);margin-bottom:16px}
+.contact .intro{color:#E9C9D3;max-width:42ch;font-size:17px}
+.links a{display:flex;justify-content:space-between;gap:16px;padding:17px 0;border-bottom:1px solid rgba(255,248,234,.22);text-decoration:none;transition:padding .3s var(--ease),color .2s}
+.links a:first-child{border-top:1px solid rgba(255,248,234,.22)}
+.links a:hover{padding-left:10px;color:var(--yellow)}
+.links span:first-child{font-weight:500}
+.links span:last-child{text-align:right;overflow-wrap:anywhere}
+.contact :focus-visible{outline-color:var(--yellow)}
+footer{border-top:1px solid rgba(255,248,234,.18);margin-top:56px;padding-top:20px;font-size:13px;color:#D3A9B6}
+@media(min-width:900px){section{padding:110px 0}.contact{padding-bottom:36px}.contact .wrap{grid-template-columns:1fr 1fr;gap:56px}.contact footer{grid-column:1/-1}}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .reveal{opacity:1;transform:none}
+  .js .reveal:not(.in) .bar i{transform:none}
+}
+</style>
+</head>
+<body>
+
+<header class="top" id="topbar">
+  <div class="wrap">
+    <a class="logo" href="#home">Faith Samuel</a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#work">Work</a>
+      <a href="#results">Results</a>
+      <a href="#process">Process</a>
+      <a class="btn dark" href="#work-with-me">Work with me</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="home" id="home">
+    <div class="word" aria-hidden="true">PORTFOLIO</div>
+    <div class="wrap">
+      <h1>Hi, I’m Faith. I make AI video and UGC people actually try.</h1>
+      <button class="folder" id="folder" type="button" aria-label="Open the folder and see my work">
+        <span class="f-back"></span>
+        <span class="file" style="--x:3%;--r:-10deg;--d:0s"><img src="img/flow-tutorial.jpg" alt=""></span>
+        <span class="file" style="--x:22%;--r:-3deg;--d:-1.1s"><img src="img/genpire.jpg" alt=""></span>
+        <span class="file" style="--x:42%;--r:4deg;--d:-2.2s"><img src="img/perfume.jpg" alt=""></span>
+        <span class="file" style="--x:61%;--r:11deg;--d:-3.3s"><img src="img/claude.jpg" alt=""></span>
+        <span class="f-front"><b>My work</b><span>13 projects inside</span></span>
+      </button>
+      <button class="btn dark" id="open" type="button">Open and see my work <span class="arr" aria-hidden="true">↓</span></button>
+      <p class="hint">AI content creator in Lagos. Every piece starts with real use of the product.</p>
+    </div>
+  </section>
+
+  <div class="after">
+  <div class="marquee" role="img" aria-label="Brands and tools featured: Genpire, Flova AI, DM Slide, AyaHQ, ZuAfrique, Claude"><div aria-hidden="true"><span>Genpire</span><i>✦</i><span>Flova AI</span><i>✦</i><span>DM Slide</span><i>✦</i><span>AyaHQ</span><i>✦</i><span>ZuAfrique</span><i>✦</i><span>Claude</span><i>✦</i><span>Genpire</span><i>✦</i><span>Flova AI</span><i>✦</i><span>DM Slide</span><i>✦</i><span>AyaHQ</span><i>✦</i><span>ZuAfrique</span><i>✦</i><span>Claude</span><i>✦</i></div></div>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="head reveal"><h2>Projects I’ve worked on</h2><p>Three kinds of work, kept separate so you know exactly what each one is. Tap a project to see the details.</p></div>
+      
+    <div class="group">
+      <div class="group-head reveal"><h3>Brand collaborations</h3><p>Paid work with AI tools: tutorials, reviews and an ambassador programme.</p></div>
+      <div class="list">
+      <div class="proj acc reveal" style="--i:0">
+        <button type="button" class="acc-btn" aria-expanded="false">
+          <img src="img/genpire.jpg" alt="" loading="lazy" width="60" height="60">
+          <span><span class="p-name">Genpire</span><span class="p-kind">AI product design tool</span></span>
+          <span class="tog" data-more="View project" data-less="See less">View project</span>
+        </button>
+        <div class="acc-more"><div><div class="box pink">
+          <img src="img/genpire.jpg" alt="" loading="lazy">
+          <div><h4>I gave AI a product idea, and it did this</h4><p>I designed a bracelet on Genpire and showed the full journey from idea to finished product shots.</p><p class="res"><b>Result:</b> 1,000+ views · 44 comments · 29 saves</p>
+          <a class="btn dark" href="https://www.instagram.com/reel/Dd8VVdtze9h/" target="_blank" rel="noopener">Watch on Instagram</a></div>
+        </div></div></div>
+      </div><div class="proj acc reveal" style="--i:1">
+        <button type="button" class="acc-btn" aria-expanded="false">
+          <img src="img/flova.jpg" alt="" loading="lazy" width="60" height="60">
+          <span><span class="p-name">Flova AI</span><span class="p-kind">AI video generation platform</span></span>
+          <span class="tog" data-more="View project" data-less="See less">View project</span>
+        </button>
+        <div class="acc-more"><div><div class="box pink">
+          <img src="img/flova.jpg" alt="" loading="lazy">
+          <div><h4>A tutorial on making AI video with Flova</h4><p>A walkthrough showing Flova’s tools in real creative work, reposted across my channels.</p><p class="res"><b>Result:</b> 1,000+ views · 20+ saves</p>
+          <a class="btn dark" href="https://www.instagram.com/reel/DfrQmuRTkmk/" target="_blank" rel="noopener">Watch on Instagram</a></div>
+        </div></div></div>
+      </div><div class="proj acc reveal" style="--i:2">
+        <button type="button" class="acc-btn" aria-expanded="false">
+          <img src="img/dm-slide.jpg" alt="" loading="lazy" width="60" height="60">
+          <span><span class="p-name">DM Slide</span><span class="p-kind">Instagram DM automation</span></span>
+          <span class="tog" data-more="View project" data-less="See less">View project</span>
+        </button>
+        <div class="acc-more"><div><div class="box pink">
+          <img src="img/dm-slide.jpg" alt="" loading="lazy">
+          <div><h4>This changed how I handled my comments</h4><p>How DM Slide turns comments into automatic DM replies, so creators can deliver resources without typing every message.</p><p class="res"><b>Result:</b> 2,000+ views · 100 comments · 50+ saves</p>
+          <a class="btn dark" href="https://www.instagram.com/reel/DeL07KZzP_g/" target="_blank" rel="noopener">Watch on Instagram</a></div>
+        </div></div></div>
+      </div>
+      </div>
+    </div>
+    <div class="group">
+      <div class="group-head reveal"><h3>My own content</h3><p>Organic posts from my page. This is where I test what works before I bring it to a brand.</p></div>
+      <div class="list">
+      <div class="proj acc reveal" style="--i:0">
+        <button type="button" class="acc-btn" aria-expanded="false">
+          <img src="img/flow-tutorial.jpg" alt="" loading="lazy" width="60" height="60">
+          <span><span class="p-name">Google Flow tutorial</span><span class="p-kind">My top Reel</span></span>
+          <span class="tog" data-more="View project" data-less="See less">View project</span>
+        </button>
+        <div class="acc-more"><div><div class="box yellow">
+          <img src="img/flow-tutorial.jpg" alt="" loading="lazy">
+          <div><h4>AI image to AI video in Google Flow</h4><p>A step-by-step tutorial that viewers could follow and repeat themselves.</p><p class="res"><b>Result:</b> 752K views · 28,000+ saves · 16,000+ comments</p>
+          <a class="btn dark" href="https://www.instagram.com/reel/DdmVKRxR91c/" target="_blank" rel="noopener">Watch on Instagram</a></div>
+        </div></div></div>
+      </div><div class="proj acc reveal" style="--i:1">
+        <button type="button" class="acc-btn" aria-expanded="false">
+          <img src="img/ai-avatar.jpg" alt="" loading="lazy" width="60" height="60">
+          <span><span class="p-name">AI avatar voice</span><span class="p-kind">AI, Unfiltered · Day 21 of 50</span></span>
+          <span class="tog" data-more="View project" data-less="See less">View project</span>
+        </button>
+        <div class="acc-more"><div><div class="box yellow">
+          <img src="img/ai-avatar.jpg" alt="" loading="lazy">
+          <div><h4>Can an AI avatar actually sound like you?</h4><p>I made an AI avatar speak in my own voice and showed it side by side with the real me.</p><p class="res"><b>Result:</b> 3,000+ views · 100+ saves</p>
+          <a class="btn dark" href="https://www.instagram.com/reel/DeE3g9LiUIc/" target="_blank" rel="noopener">Watch on Instagram</a></div>
+        </div></div></div>
+      </div><div class="proj acc reveal" style="--i:2">
+        <button type="button" class="acc-btn" aria-expanded="false">
+          <img src="img/claude.jpg" alt="" loading="lazy" width="60" height="60">
+          <span><span class="p-name">Claude</span><span class="p-kind">Unpaid feature · Day 10 of 50</span></span>
+          <span class="tog" data-more="View project" data-less="See less">View project</span>
+        </button>
+        <div class="acc-more"><div><div class="box yellow">
+          <img src="img/claude.jpg" alt="" loading="lazy">
+          <div><h4>I gave Claude one job: help me survive the next 50 days</h4><p>An honest look at how I use Claude in my work. No brand deal, just a tool I rely on.</p><p class="res"><b>Result:</b> 2,000+ views · 100+ comments</p>
+          <a class="btn dark" href="https://www.instagram.com/reel/DdnwFE9I3ZG/" target="_blank" rel="noopener">Watch on Instagram</a></div>
+        </div></div></div>
+      </div><div class="proj acc reveal" style="--i:3">
+        <button type="button" class="acc-btn" aria-expanded="false">
+          <img src="img/ai-tools.jpg" alt="" loading="lazy" width="60" height="60">
+          <span><span class="p-name">AI tools test</span><span class="p-kind">7-slide carousel</span></span>
+          <span class="tog" data-more="View project" data-less="See less">View project</span>
+        </button>
+        <div class="acc-more"><div><div class="box yellow">
+          <img src="img/ai-tools.jpg" alt="" loading="lazy">
+          <div><h4>I gave 4 AI models the same prompt. Who won?</h4><p>Four AI models side by side on one prompt, so my audience could compare the results.</p><p class="res"><b>Result:</b> 300+ likes · 200+ saves · 60+ reshares</p>
+          <a class="btn dark" href="https://www.instagram.com/p/Ddt5x_IAseL/" target="_blank" rel="noopener">View on Instagram</a></div>
+        </div></div></div>
+      </div>
+      </div>
+    </div>
+    <div class="group">
+      <div class="group-head reveal"><h3>Concept campaigns</h3><p>Self-initiated AI ads and UGC. Not commissioned by these brands, made to show what I can produce.</p></div>
+      <div class="list">
+      <div class="proj acc reveal" style="--i:0">
+        <button type="button" class="acc-btn" aria-expanded="false">
+          <img src="img/epic-pay.jpg" alt="" loading="lazy" width="60" height="60">
+          <span><span class="p-name">Epic Pay</span><span class="p-kind">Fintech commercial</span></span>
+          <span class="tog" data-more="View project" data-less="See less">View project</span>
+        </button>
+        <div class="acc-more"><div><div class="box blue">
+          <img src="img/epic-pay.jpg" alt="" loading="lazy">
+          <div><h4>A widescreen commercial for a payments brand</h4><p>A payment going through in a neighbourhood shop, made to show how I’d tell a fintech brand’s story.</p><p class="res"><b>Shows:</b> commercial storytelling for fintech</p>
+          <a class="btn dark" href="https://drive.google.com/drive/folders/11H87unx-PxYWyDzSDaboMmKdBC-21KsK" target="_blank" rel="noopener">Watch on Google Drive</a></div>
+        </div></div></div>
+      </div><div class="proj acc reveal" style="--i:1">
+        <button type="button" class="acc-btn" aria-expanded="false">
+          <img src="img/viva.jpg" alt="" loading="lazy" width="60" height="60">
+          <span><span class="p-name">Viva Detergent</span><span class="p-kind">Household commercial</span></span>
+          <span class="tog" data-more="View project" data-less="See less">View project</span>
+        </button>
+        <div class="acc-more"><div><div class="box blue">
+          <img src="img/viva.jpg" alt="" loading="lazy">
+          <div><h4>However dirty your clothes get, the stain comes out</h4><p>A widescreen AI commercial built on one simple idea.</p><p class="res"><b>Shows:</b> product commercials for household brands</p>
+          <a class="btn dark" href="https://drive.google.com/file/d/101xDkxEZ_0wG1x6jZdqjutThTG4pTwfZ/view" target="_blank" rel="noopener">Watch on Google Drive</a></div>
+        </div></div></div>
+      </div><div class="proj acc reveal" style="--i:2">
+        <button type="button" class="acc-btn" aria-expanded="false">
+          <img src="img/perfume.jpg" alt="" loading="lazy" width="60" height="60">
+          <span><span class="p-name">Perfume</span><span class="p-kind">Luxury fragrance</span></span>
+          <span class="tog" data-more="View project" data-less="See less">View project</span>
+        </button>
+        <div class="acc-more"><div><div class="box blue">
+          <img src="img/perfume.jpg" alt="" loading="lazy">
+          <div><h4>A 20-second cinematic fragrance spot</h4><p>A campaign film built from my own model reference, shot to read like a real production.</p><p class="res"><b>Shows:</b> cinematic AI direction for beauty</p>
+          <a class="btn dark" href="https://drive.google.com/file/d/1M0CYiDpTCAJRRB7cUEaLHPjhCIc57GP5/view" target="_blank" rel="noopener">Watch on Google Drive</a></div>
+        </div></div></div>
+      </div><div class="proj acc reveal" style="--i:3">
+        <button type="button" class="acc-btn" aria-expanded="false">
+          <img src="img/itel.jpg" alt="" loading="lazy" width="60" height="60">
+          <span><span class="p-name">iTel</span><span class="p-kind">Consumer electronics</span></span>
+          <span class="tog" data-more="View project" data-less="See less">View project</span>
+        </button>
+        <div class="acc-more"><div><div class="box blue">
+          <img src="img/itel.jpg" alt="" loading="lazy">
+          <div><h4>A launch video for the 80,000mAh power bank</h4><p>A UGC-style video built with AI characters, made to feel like a real customer review.</p><p class="res"><b>Shows:</b> AI UGC for product launches</p>
+          <a class="btn dark" href="https://drive.google.com/file/d/1zDgOhgsnKrMauHGZla_BKFGdsKnA2ISt/view" target="_blank" rel="noopener">Watch on Google Drive</a></div>
+        </div></div></div>
+      </div><div class="proj acc reveal" style="--i:4">
+        <button type="button" class="acc-btn" aria-expanded="false">
+          <img src="img/no-occasion.jpg" alt="" loading="lazy" width="60" height="60">
+          <span><span class="p-name">No Occasion</span><span class="p-kind">Ready-to-wear fashion</span></span>
+          <span class="tog" data-more="View project" data-less="See less">View project</span>
+        </button>
+        <div class="acc-more"><div><div class="box blue">
+          <img src="img/no-occasion.jpg" alt="" loading="lazy">
+          <div><h4>A 90-second AI hero film for fashion</h4><p>Built to look like real production, ready to be re-skinned for any fashion brand.</p><p class="res"><b>Shows:</b> cinematic AI direction for fashion</p>
+          <a class="btn dark" href="https://drive.google.com/file/d/18G6lGSMo-kP7TvmYLPBDZn64yxAYp9e-/view" target="_blank" rel="noopener">Watch on Google Drive</a></div>
+        </div></div></div>
+      </div><div class="proj acc reveal" style="--i:4">
+        <button type="button" class="acc-btn" aria-expanded="false">
+          <img src="img/ugc-range.jpg" alt="" loading="lazy" width="60" height="60">
+          <span><span class="p-name">UGC range</span><span class="p-kind">Eight categories</span></span>
+          <span class="tog" data-more="View project" data-less="See less">View project</span>
+        </button>
+        <div class="acc-more"><div><div class="box blue">
+          <img src="img/ugc-range.jpg" alt="" loading="lazy">
+          <div><h4>Sample UGC across eight categories</h4><p>Talking-head and AI UGC samples, plus podcast promos, so you can see the style first.</p><p class="res"><b>Shows:</b> beauty, fashion, fitness, real estate, home</p>
+          <a class="btn dark" href="https://drive.google.com/drive/folders/1z0xf1wGRjZ29dp_KIejyPqJoYsP7e4RO" target="_blank" rel="noopener">Watch on Google Drive</a></div>
+        </div></div></div>
+      </div>
+      </div>
+    </div>
+    </div>
+  </section>
+
+  <section class="numbers" id="results">
+    <div class="wrap">
+      <div class="head reveal"><h2>By the numbers</h2><p>From my own Instagram, all organic. The same approach goes into brand work.</p></div>
+      <div class="stats">
+        <div class="stat reveal" style="--i:0"><b data-count>895K</b><p>Instagram Reel views in 60 days</p></div>
+        <div class="stat reveal" style="--i:1"><b data-count>752K</b><p>views on my top-performing Reel</p></div>
+        <div class="stat reveal" style="--i:2"><b data-count>37K</b><p>saves across my content</p></div>
+        <div class="stat reveal" style="--i:3"><b data-count>23K</b><p>comments, with a 100% DM reply rate</p></div>
+      </div>
+      <p class="source">Instagram Insights, 13 September to 12 November 2026</p>
+    </div>
+  </section>
+
+  <section id="cases">
+    <div class="wrap">
+      <div class="head reveal"><h2>Case studies</h2><p>Tested on my own page first.</p></div>
+      <div class="cases">
+        <article class="case pink reveal acc" style="--i:0">
+          <p class="big">752K</p><h3>My top-performing Reel</h3>
+          <div class="tog-row"><button type="button" class="tog" data-more="See details" data-less="See less" aria-expanded="false">See details</button></div>
+          <div class="acc-more"><div><dl>
+            <div><dt>The idea</dt><dd>A how-to tutorial on Google Flow: generating an image with AI, then turning it into a video.</dd></div>
+            <div><dt>What I did</dt><dd>Walked through every step on screen and kept it easy to follow, so viewers could do it themselves.</dd></div>
+            <div><dt>Result</dt><dd><strong>752K views, 28,000+ saves, 16,000+ comments</strong>, 10,000+ likes and 500+ reshares.</dd></div>
+          </dl></div></div>
+        </article>
+        <article class="case yellow reveal acc" style="--i:1">
+          <p class="big">500K+</p><h3>AI, Unfiltered</h3>
+          <div class="tog-row"><button type="button" class="tog" data-more="See details" data-less="See less" aria-expanded="false">See details</button></div>
+          <div class="acc-more"><div><dl>
+            <div><dt>The idea</dt><dd>A 50-day daily Instagram series of practical AI tips and honest takes, in Reels and carousels.</dd></div>
+            <div><dt>What I did</dt><dd>Posted every day, built each episode on a curiosity hook, and only covered tools I had used myself.</dd></div>
+            <div><dt>Result</dt><dd>By day 21: <strong>500K+ views, 20,000 saves and 15,000+ comments</strong>. Following grew 731% in one month.</dd></div>
+          </dl></div></div>
+        </article>
+        <article class="case blue reveal acc" style="--i:2">
+          <p class="big">1,000+</p><h3>The free prompt pack</h3>
+          <div class="tog-row"><button type="button" class="tog" data-more="See details" data-less="See less" aria-expanded="false">See details</button></div>
+          <div class="acc-more"><div><dl>
+            <div><dt>The idea</dt><dd>80 AI prompts that turn one phone photo of a product into a finished ad, for business owners.</dd></div>
+            <div><dt>What I did</dt><dd>Released it free through a talking-head Reel with a “comment PROMPT” call to action and automated DM delivery.</dd></div>
+            <div><dt>Result</dt><dd><strong>1,000+ comments and 300+ sign-ups</strong>, including from the US and UK.</dd></div>
+          </dl></div></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee alt" role="img" aria-label="Tools I work with: Kling AI, Seedance, Higgsfield, Google Flow, HeyGen, Midjourney, Nano Banana, ElevenLabs, ChatGPT, Claude, CapCut, Canva"><div aria-hidden="true"><span>Kling AI</span><i>✦</i><span>Seedance</span><i>✦</i><span>Higgsfield</span><i>✦</i><span>Google Flow</span><i>✦</i><span>HeyGen</span><i>✦</i><span>Midjourney</span><i>✦</i><span>Nano Banana</span><i>✦</i><span>ElevenLabs</span><i>✦</i><span>ChatGPT</span><i>✦</i><span>Claude</span><i>✦</i><span>CapCut</span><i>✦</i><span>Canva</span><i>✦</i><span>Kling AI</span><i>✦</i><span>Seedance</span><i>✦</i><span>Higgsfield</span><i>✦</i><span>Google Flow</span><i>✦</i><span>HeyGen</span><i>✦</i><span>Midjourney</span><i>✦</i><span>Nano Banana</span><i>✦</i><span>ElevenLabs</span><i>✦</i><span>ChatGPT</span><i>✦</i><span>Claude</span><i>✦</i><span>CapCut</span><i>✦</i><span>Canva</span><i>✦</i></div></div>
+
+  <section id="process">
+    <div class="wrap">
+      <div class="head reveal"><h2>My process</h2><p>From brief to posted in under a week. I handle every stage myself, so nothing gets lost between a strategist, a creator and an editor.</p></div>
+      <div class="steps">
+        <div class="step reveal" style="--i:0"><h3>Brief and test</h3><p>You share the product, the goal and any must-says. I use the product for real before I write a word.</p></div>
+        <div class="step reveal" style="--i:1"><h3>Script and produce</h3><p>A story-led hook, then the full build: scripting, filming, AI generation, voice and editing, all in-house.</p></div>
+        <div class="step reveal" style="--i:2"><h3>Deliver</h3><p>Posted or handed over in 3–5 working days, with the results shared after.</p></div>
+      </div>
+      <div class="terms reveal"><span class="pill yellow">One revision round included</span><span class="pill pink">Usage rights for paid ads quoted separately</span></div>
+    </div>
+  </section>
+
+  <section id="reach" style="padding-top:0">
+    <div class="wrap reach">
+      <div class="panel blue reveal">
+        <h3>Who you’ll reach</h3>
+        <div class="bars" role="list" aria-label="Key markets by share of Instagram audience">
+          <div class="bar" role="listitem">Nigeria<span><i style="--w:100%"></i></span><em>56%</em></div>
+          <div class="bar" role="listitem">Kenya<span><i style="--w:10.7%"></i></span><em>6%</em></div>
+          <div class="bar" role="listitem">UK<span><i style="--w:7.1%"></i></span><em>4%</em></div>
+          <div class="bar" role="listitem">US<span><i style="--w:5.4%"></i></span><em>3%</em></div>
+        </div>
+        <div class="facts">
+          <div class="fact"><b>6,400+</b><span>followers</span></div>
+          <div class="fact"><b>76%</b><span>aged 18–34</span></div>
+          <div class="fact"><b>52 / 48</b><span>women / men</span></div>
+          <div class="fact"><b>86%</b><span>English-speaking</span></div>
+        </div>
+        <p class="note">Business owners, AI creators and people working out how AI fits into their work. On LinkedIn, 4,000+ founders and professionals follow along too.</p>
+      </div>
+      <div class="panel pink reveal" style="--i:1" id="brands">
+        <h3>Brands I’ve worked with</h3>
+        <div class="chips">
+          <span class="chip"><b>Genpire</b><span>AI product design</span></span>
+          <span class="chip"><b>Flova AI</b><span>AI video</span></span>
+          <span class="chip"><b>DM Slide</b><span>DM automation</span></span>
+          <span class="chip"><b>AyaHQ</b><span>Builder ecosystem</span></span>
+          <span class="chip"><b>ZuAfrique</b><span>Events &amp; community</span></span>
+        </div>
+        <p class="note">Also featured organically: Claude by Anthropic.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="work-with-me" style="padding-top:0">
+    <div class="wrap">
+      <div class="head reveal"><h2>Work with me</h2><p>Two ways to work together. Either way, a short call is the fastest place to start.</p></div>
+      <div class="paths">
+        <article class="path yellow reveal">
+          <span class="pill pink" style="justify-self:start">For brands and AI tools</span>
+          <h3>Get your product in front of my audience</h3>
+          <p>Sponsored Reels, tutorials and “I Tested This” reviews on my platforms, plus UGC videos for your own channels.</p>
+          <ul><li>Dedicated Reels and tutorial series</li><li>UGC videos delivered for your channels</li><li>Cross-posting to TikTok and Instagram</li></ul>
+          <div class="cta"><a class="btn dark" href="https://fluffy-seahorse-0eecd9.netlify.app" target="_blank" rel="noopener">View my media kit</a><a class="btn" href="https://calendly.com/faithsamuel46/30min" target="_blank" rel="noopener">Book a call</a></div>
+        </article>
+        <article class="path blue reveal" style="--i:1">
+          <span class="pill yellow" style="justify-self:start">For businesses and organisations</span>
+          <h3>AI campaign videos made for your brand</h3>
+          <p>Cinematic AI ads and product campaigns, created from script to final cut and delivered ready to run.</p>
+          <ul><li>AI product and commercial videos</li><li>Realistic and cinematic AI options</li><li>Usage rights for paid ads available</li></ul>
+          <div class="cta"><a class="btn dark" href="https://symphonious-tapioca-5c2f6c.netlify.app" target="_blank" rel="noopener">View my rate card</a><a class="btn" href="https://calendly.com/faithsamuel46/30min" target="_blank" rel="noopener">Book a call</a></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="reveal">
+        <h2>Send me your product and your goal.</h2>
+        <p class="intro">I’ll come back with a content idea built around both, plus my pitch deck and rates for your scope.</p>
+      </div>
+      <div class="links reveal" style="--i:1">
+        <a href="mailto:faithsamuel46@gmail.com"><span>Email</span><span>faithsamuel46@gmail.com</span></a>
+        <a href="https://instagram.com/faith__creator" target="_blank" rel="noopener"><span>Instagram</span><span>@faith__creator</span></a>
+        <a href="https://tiktok.com/@faithcreates0" target="_blank" rel="noopener"><span>TikTok</span><span>@faithcreates0</span></a>
+        <a href="https://www.linkedin.com/in/faith-samuel-498654219" target="_blank" rel="noopener"><span>LinkedIn</span><span>Faith Samuel</span></a>
+        <a href="https://calendly.com/faithsamuel46/30min" target="_blank" rel="noopener"><span>Book a call</span><span>30-minute intro call</span></a>
+      </div>
+      <footer>Faith Samuel, AI content creator. Lagos, Nigeria.</footer>
+    </div>
+  </section>
+  </div>
+</main>
+
+<script>
+(function () {
+  var calm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var bar = document.getElementById('topbar');
+  addEventListener('scroll', function () { bar.classList.toggle('scrolled', scrollY > 8); }, { passive: true });
+
+  // reveal on scroll (works on iPhone Safari too)
+  var items = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window) || calm) {
+    items.forEach(function (el) { el.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    items.forEach(function (el) { io.observe(el); });
+
+    // numbers count up
+    var co = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return; co.unobserve(e.target);
+        var el = e.target, txt = el.textContent, m = txt.match(/^([^0-9]*)([0-9]+)(.*)$/);
+        if (!m) return;
+        var end = +m[2], t0 = null;
+        (function tick(t) {
+          if (!t0) t0 = t || performance.now();
+          var k = Math.min(1, ((t || t0) - t0) / 1400); k = 1 - Math.pow(1 - k, 3);
+          el.textContent = m[1] + Math.round(end * k) + m[3];
+          if (k < 1) requestAnimationFrame(tick); else el.textContent = txt;
+        })();
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('[data-count]').forEach(function (n) { co.observe(n); });
+
+    // highlight the section you're in
+    var links = document.querySelectorAll('.nav a[href^="#"]:not(.btn)');
+    var so = new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        links.forEach(function (a) { a.classList.toggle('here', a.getAttribute('href') === '#' + e.target.id); });
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    ['work', 'results', 'process'].forEach(function (id) { so.observe(document.getElementById(id)); });
+  }
+
+  // folder: opens, then reveals the portfolio
+  var root = document.documentElement, folder = document.getElementById('folder');
+  function openTo(id) {
+    function go() {
+      root.classList.remove('closed');
+      requestAnimationFrame(function () { document.getElementById(id).scrollIntoView({ behavior: calm ? 'auto' : 'smooth', block: 'start' }); });
+    }
+    if (!root.classList.contains('closed')) return go();
+    folder.classList.add('open');
+    setTimeout(go, calm ? 0 : 950);
+  }
+  folder.addEventListener('click', function () { openTo('work'); });
+  document.getElementById('open').addEventListener('click', function () { openTo('work'); });
+  document.querySelectorAll('.nav a[href^="#"]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      if (!root.classList.contains('closed')) return;
+      e.preventDefault(); openTo(a.getAttribute('href').slice(1));
+    });
+  });
+  if (location.hash && location.hash !== '#home' && document.getElementById(location.hash.slice(1))) { folder.classList.add('open'); root.classList.remove('closed'); }
+
+  // dropdowns: view project / see less
+  document.querySelectorAll('.acc').forEach(function (acc) {
+    var btn = acc.querySelector('[aria-expanded]'), label = acc.querySelector('.tog');
+    btn.addEventListener('click', function () {
+      var open = acc.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+      label.textContent = open ? label.dataset.less : label.dataset.more;
+    });
+  });
+})();
+</script>
+</body>
+</html>
