@@ -144,7 +144,11 @@ h1,h2,h3{font-weight:400;letter-spacing:-.045em;line-height:1;text-wrap:balance}
 .menu div{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:10px 0;border-top:1px solid var(--line)}
 .menu b{font-weight:400;font-size:22px;letter-spacing:-.04em}
 .note{font-size:14px;color:var(--mute);margin-top:14px}
-@media(min-width:760px){.rates{grid-template-columns:1fr 1fr 1fr}}
+.r-head{font-size:24px;letter-spacing:-.035em;margin:6px 0 6px}
+.r-sub{color:var(--mute);font-size:15px;max-width:60ch;margin-bottom:16px}
+.rates.ugc{margin-top:0}
+.inner .note+.r-head{margin-top:34px}
+@media(min-width:760px){.rates{grid-template-columns:1fr 1fr 1fr}.rates.ugc{grid-template-columns:1fr 1fr;max-width:640px}}
 
 /* terms */
 .terms{display:grid;gap:10px}
@@ -298,10 +302,12 @@ footer a{text-underline-offset:4px}
     <div class="sec acc reveal" id="rates">
       <button class="sec-btn" type="button" aria-expanded="false" aria-controls="p-rates">
         <span class="sec-dot yellow"></span>
-        <span><span class="sec-title">Rates</span><span class="sec-sub">For content I create and post on my own page</span></span>
+        <span><span class="sec-title">Rates</span><span class="sec-sub">Posts on my page, and UGC videos for yours</span></span>
         <span class="plus" aria-hidden="true"></span>
       </button>
       <div class="more" id="p-rates"><div><div class="inner">
+        <h3 class="r-head" style="--i:0">Posted on my page</h3>
+        <p class="r-sub" style="--i:0">I create the content and post it on my Instagram and TikTok, to my audience.</p>
         <div class="rates">
           <article class="rate" style="--i:0">
             <span class="pill pink" style="justify-self:start">Posted on my page</span>
@@ -325,8 +331,26 @@ footer a{text-underline-offset:4px}
             </div>
           </article>
         </div>
-        <p class="note" style="--i:3">These rates are for content I post on my own Instagram and TikTok. They include organic usage; paid-ad usage rights, whitelisting and Spark Ads are quoted separately.</p>
-        <p class="note" style="--i:4">Want a video made for your own page instead? <a href="https://faithsamie.github.io/rate-card/" target="_blank" rel="noopener" style="font-weight:500;color:var(--ink);text-underline-offset:4px">See my UGC and AI video rate card</a>.</p>
+        <p class="note" style="--i:3">Includes organic usage on my page. Paid-ad usage rights, whitelisting and Spark Ads are quoted separately.</p>
+
+        <h3 class="r-head" style="--i:4">UGC videos for your page</h3>
+        <p class="r-sub" style="--i:4">I film myself using and talking about your product, then edit it into a ready-to-post video for your own page, ads or any platform you choose.</p>
+        <div class="rates ugc">
+          <article class="rate" style="--i:5">
+            <span class="pill blue" style="justify-self:start">For your page</span>
+            <p class="price">$100</p>
+            <h3>UGC video, 30 seconds</h3>
+            <p>In Nigeria: ₦80,000</p>
+          </article>
+          <article class="rate feature" style="--i:6">
+            <span class="pill blue" style="justify-self:start">For your page</span>
+            <p class="price">$200</p>
+            <h3>UGC video, 1 minute</h3>
+            <p>In Nigeria: ₦150,000</p>
+          </article>
+        </div>
+        <p class="note" style="--i:7">Includes one revision round and organic use on your page. Scripting is +$20 (₦15,000) and rush delivery +$15 (₦10,000).</p>
+        <p class="note" style="--i:8">Need a video made entirely with AI, with no filming? <a href="https://faithsamie.github.io/rate-card/" target="_blank" rel="noopener" style="font-weight:500;color:var(--ink);text-underline-offset:4px">See my AI video rate card</a>.</p>
       </div></div></div>
     </div>
 
@@ -396,6 +420,8 @@ footer a{text-underline-offset:4px}
   document.querySelectorAll('.acc').forEach(function (acc) {
     acc.querySelector(':scope > button').addEventListener('click', function () { setOpen(acc, !acc.classList.contains('open')); });
   });
+  var hashed = location.hash && document.getElementById(location.hash.slice(1));
+  if (hashed && hashed.classList.contains('acc')) setOpen(hashed, true);
   document.querySelectorAll('[data-jump]').forEach(function (b) {
     b.addEventListener('click', function () {
       var t = document.getElementById(b.dataset.jump); setOpen(t, true);

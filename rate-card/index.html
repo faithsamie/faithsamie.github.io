@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Faith Samuel Rate Card</title>
+<title>Faith Samuel | AI video rate card</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap">
@@ -21,7 +21,7 @@
 body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Lexend,system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:clip}
 .wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
 header{background:var(--pink)}
-header .wrap{padding-block:clamp(32px,6vw,64px) 0;display:grid;gap:24px}
+header .wrap{padding-block:clamp(32px,6vw,64px) clamp(28px,4vw,44px);display:grid;gap:24px}
 .top{display:flex;flex-wrap:wrap;gap:16px 40px;align-items:flex-end;justify-content:space-between}
 h1{font-size:clamp(36px,6vw,56px);line-height:1.02;font-weight:700;margin:0;letter-spacing:-.02em}
 .tag{margin:10px 0 0;font-size:18px}
@@ -81,13 +81,9 @@ footer small{display:block;opacity:.75;font-size:14px;margin-top:4px}
     <div class="top">
       <div>
         <h1>Faith Samuel</h1>
-        <p class="tag">UGC and AI video for brands</p>
+        <p class="tag">AI video for brands</p>
       </div>
-      <span class="year">Rate card 2026</span>
-    </div>
-    <div class="tabs" role="tablist" aria-label="Choose a service">
-      <button id="t-ugc" role="tab" type="button" aria-selected="true"><b>UGC video</b><span>Me on camera</span></button>
-      <button id="t-ai" role="tab" type="button" aria-selected="false"><b>AI video</b><span>Made with AI</span></button>
+      <span class="year">AI video rate card 2026</span>
     </div>
   </div>
 </header>
@@ -115,6 +111,7 @@ footer small{display:block;opacity:.75;font-size:14px;margin-top:4px}
   </div>
 
   <p class="note" id="fx" hidden></p>
+  <p class="note">Want me on camera instead, or a video posted on my own page? <a href="https://faithsamie.github.io/media-kit/#rates" style="color:var(--ink);font-weight:600;text-underline-offset:4px">See my UGC and creator rates in my media kit</a>.</p>
 
   <div class="grid2">
     <section class="block y">
@@ -165,12 +162,6 @@ footer small{display:block;opacity:.75;font-size:14px;margin-top:4px}
 <script>
 {
 const PAGES={
-  ugc:{
-    intro:'I film myself using and talking about your product, then edit it into a ready-to-post video. Your audience sees a real person, my face and my voice.',
-    rows:[
-      {name:'UGC video',note:'Me on camera, talking about your product',opts:[{l:'30 seconds',ngn:80000,usd:100},{l:'1 minute',ngn:150000,usd:200}]}
-    ]
-  },
   ai:{
     intro:'I create the whole video with AI: characters, scenes and voice. No filming needed on your side. Pick the look you want.',
     rows:[
@@ -203,7 +194,7 @@ const CUR=[
 const fmt=new Intl.NumberFormat('en-US');
 const esc=s=>String(s).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 const $=id=>document.getElementById(id);
-let page='ugc',market='int',cur='NGN';
+let page='ai',market='int',cur='NGN';
 
 $('cur').innerHTML=CUR.map(k=>`<option value="${esc(k.c)}">${esc(k.n)} (${esc(k.c)})</option>`).join('');
 
@@ -217,8 +208,6 @@ function render(){
   $('intro').textContent=P.intro;
   $('list').innerHTML=P.rows.map(s=>`<article class="row"><div><h2>${esc(s.name)}</h2><p>${esc(s.note)}</p>${s.badge?`<span class="badge${s.real?' real':''}">${esc(s.badge)}</span>`:''}</div><div class="opts">${s.opts.map(o=>`<div class="opt"><span>${esc(o.l)}</span><b>${esc(price(o))}</b>${o.s?`<small>${esc(o.s)}</small>`:''}</div>`).join('')}</div></article>`).join('');
   $('addons').innerHTML=ADDONS.map(a=>`<li><span>${esc(a.l)}</span><em>${esc(a.t||'+'+price(a))}</em></li>`).join('');
-  $('t-ugc').setAttribute('aria-selected',page==='ugc');
-  $('t-ai').setAttribute('aria-selected',page==='ai');
   $('m-int').setAttribute('aria-pressed',market==='int');
   $('m-afr').setAttribute('aria-pressed',market==='afr');
   $('pick').hidden=market!=='afr';
@@ -233,12 +222,12 @@ function render(){
     :`Prices in ${k.n} are converted from my naira rates at approximate exchange rates (${FX_DATE}). I confirm the final amount in your currency before you book. Don't see your currency? Ask and I'll quote it.`;
 }
 function setHash(){
-  const h=page+'-'+(market==='int'?'international':(cur==='NGN'?'africa':'africa-'+cur.toLowerCase()));
+  const h=(market==='int'?'international':(cur==='NGN'?'africa':'africa-'+cur.toLowerCase()));
   try{history.replaceState(null,'','#'+h)}catch(e){try{location.hash=h}catch(e2){}}
 }
 function fromHash(){
   const parts=(location.hash||'').slice(1).toLowerCase().split('-').filter(Boolean);
-  if(parts[0]==='ugc'||parts[0]==='ai')page=parts.shift();
+  if(parts[0]==='ugc'||parts[0]==='ai')parts.shift();
   if(parts[0]==='africa'){
     market='afr';
     const k=parts[1]&&CUR.find(x=>x.c.toLowerCase()===parts[1]);
@@ -250,8 +239,6 @@ function swap(fn){
   const l=$('list');l.classList.add('fade');
   setTimeout(()=>{fn();render();setHash();l.classList.remove('fade')},120);
 }
-$('t-ugc').addEventListener('click',()=>swap(()=>{page='ugc'}));
-$('t-ai').addEventListener('click',()=>swap(()=>{page='ai'}));
 $('m-int').addEventListener('click',()=>swap(()=>{market='int'}));
 $('m-afr').addEventListener('click',()=>swap(()=>{market='afr'}));
 $('cur').addEventListener('change',e=>swap(()=>{cur=e.target.value}));
