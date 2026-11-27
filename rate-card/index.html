@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Faith Samuel | AI video rate card</title>
+<title>Faith Samuel AI Video Rates</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap">
@@ -45,6 +45,8 @@ button:focus-visible,select:focus-visible{outline:3px solid var(--ink);outline-o
 .row{background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:22px clamp(18px,3vw,28px);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.4fr);gap:16px 28px;align-items:center}
 .row h2{font-size:20px;line-height:1.25;font-weight:600;margin:0}
 .row p{margin:6px 0 0;color:var(--soft);font-size:15px}
+.row p.uses{margin:14px 0 4px;color:var(--ink);font-size:14px}
+ul.uses{margin:0;padding-left:18px;font-size:14px;color:var(--soft);display:grid;gap:2px}
 .badge{display:inline-block;font-size:12px;font-weight:600;border-radius:999px;padding:3px 10px;margin-top:10px;background:var(--blue);white-space:nowrap}
 .badge.real{background:var(--yellow)}
 .opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
@@ -111,7 +113,7 @@ footer small{display:block;opacity:.75;font-size:14px;margin-top:4px}
   </div>
 
   <p class="note" id="fx" hidden></p>
-  <p class="note">Want me on camera instead, or a video posted on my own page? <a href="https://faithsamie.github.io/media-kit/#rates" style="color:var(--ink);font-weight:600;text-underline-offset:4px">See my UGC and creator rates in my media kit</a>.</p>
+  <p class="note">Want me on camera instead? <a href="https://faithsamie.github.io/ugc-rates/" style="color:var(--ink);font-weight:600;text-underline-offset:4px">See my UGC rates</a>. Want it posted on my own page? <a href="https://faithsamie.github.io/media-kit/#rates" style="color:var(--ink);font-weight:600;text-underline-offset:4px">See my media kit</a>.</p>
 
   <div class="grid2">
     <section class="block y">
@@ -162,11 +164,17 @@ footer small{display:block;opacity:.75;font-size:14px;margin-top:4px}
 <script>
 {
 const PAGES={
+  ugc:{
+    intro:'I film myself using and talking about your product, then edit it into a ready-to-post video. Your audience sees a real person, my face and my voice.',
+    rows:[
+      {name:'UGC video',note:'Me on camera, talking about your product',opts:[{l:'30 seconds',ngn:80000,usd:100},{l:'1 minute',ngn:150000,usd:200}]}
+    ]
+  },
   ai:{
     intro:'I create the whole video with AI: characters, scenes and voice. No filming needed on your side. Pick the look you want.',
     rows:[
-      {name:'Standard AI video',note:'Clean, stylised AI visuals. Good for explainers and social posts. It looks like AI, not real footage.',badge:'Looks AI',opts:[{l:'30 seconds',ngn:25000,usd:30},{l:'1 minute',ngn:40000,usd:50}]},
-      {name:'Realistic and cinematic AI video',note:'Looks like real, filmed footage, with lifelike people and film-quality shots. Made with Seedance 2.5.',badge:'Looks real',real:true,opts:[{l:'30 seconds',ngn:50000,usd:80},{l:'1 minute',ngn:85000,usd:150}]},
+      {name:'Standard AI video',note:'Made fully with AI. Clean and clear, but viewers can tell it is AI.',uses:['Explainer videos','AI UGC: an AI presenter talks about your product','Product and feature walkthroughs','Social media posts'],badge:'Looks AI',opts:[{l:'30 seconds',ngn:25000,usd:30},{l:'1 minute',ngn:40000,usd:50}]},
+      {name:'Realistic and cinematic AI video',note:'Made fully with AI, but it looks like real filmed footage, with lifelike people and film-quality shots. Made with Seedance 2.5.',uses:['AI UGC that looks like a real person filmed it','Story-led videos and short scenes','Lifestyle and product-in-use shots','Premium brand content'],badge:'Looks real',real:true,opts:[{l:'30 seconds',ngn:50000,usd:80},{l:'1 minute',ngn:85000,usd:150}]},
       {name:'AI commercial or product campaign',note:'Up to 30 seconds, built to sell your product.',opts:[{l:'Standard look',s:'Looks AI',ngn:50000,usd:100},{l:'Realistic, cinematic look',s:'Looks real',ngn:100000,usd:200}]}
     ]
   }
@@ -194,7 +202,7 @@ const CUR=[
 const fmt=new Intl.NumberFormat('en-US');
 const esc=s=>String(s).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 const $=id=>document.getElementById(id);
-let page='ai',market='int',cur='NGN';
+const page='ai';let market='int',cur='NGN';
 
 $('cur').innerHTML=CUR.map(k=>`<option value="${esc(k.c)}">${esc(k.n)} (${esc(k.c)})</option>`).join('');
 
@@ -206,7 +214,7 @@ function price(o){
 function render(){
   const P=PAGES[page];
   $('intro').textContent=P.intro;
-  $('list').innerHTML=P.rows.map(s=>`<article class="row"><div><h2>${esc(s.name)}</h2><p>${esc(s.note)}</p>${s.badge?`<span class="badge${s.real?' real':''}">${esc(s.badge)}</span>`:''}</div><div class="opts">${s.opts.map(o=>`<div class="opt"><span>${esc(o.l)}</span><b>${esc(price(o))}</b>${o.s?`<small>${esc(o.s)}</small>`:''}</div>`).join('')}</div></article>`).join('');
+  $('list').innerHTML=P.rows.map(s=>`<article class="row"><div><h2>${esc(s.name)}</h2><p>${esc(s.note)}</p>${s.uses?`<p class="uses"><strong>Good for</strong></p><ul class="uses">${s.uses.map(u=>`<li>${esc(u)}</li>`).join('')}</ul>`:''}${s.badge?`<span class="badge${s.real?' real':''}">${esc(s.badge)}</span>`:''}</div><div class="opts">${s.opts.map(o=>`<div class="opt"><span>${esc(o.l)}</span><b>${esc(price(o))}</b>${o.s?`<small>${esc(o.s)}</small>`:''}</div>`).join('')}</div></article>`).join('');
   $('addons').innerHTML=ADDONS.map(a=>`<li><span>${esc(a.l)}</span><em>${esc(a.t||'+'+price(a))}</em></li>`).join('');
   $('m-int').setAttribute('aria-pressed',market==='int');
   $('m-afr').setAttribute('aria-pressed',market==='afr');
@@ -222,7 +230,7 @@ function render(){
     :`Prices in ${k.n} are converted from my naira rates at approximate exchange rates (${FX_DATE}). I confirm the final amount in your currency before you book. Don't see your currency? Ask and I'll quote it.`;
 }
 function setHash(){
-  const h=(market==='int'?'international':(cur==='NGN'?'africa':'africa-'+cur.toLowerCase()));
+  const h=market==='int'?'international':(cur==='NGN'?'africa':'africa-'+cur.toLowerCase());
   try{history.replaceState(null,'','#'+h)}catch(e){try{location.hash=h}catch(e2){}}
 }
 function fromHash(){

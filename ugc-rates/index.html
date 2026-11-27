@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Faith Samuel UGC Rates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&display=swap">
+<style>
+/* VOICE: calm, confident freelance creator; clear prices, no fuss
+   IDEA: a printed price list with two pages (on camera / made with AI) that re-prints itself in the client's currency
+   PICTURE: the price list itself, prices set large, page tabs and currency picker on top
+   COLOUR and TYPE: her brand — cream, burgundy, pink, yellow, sky blue; Lexend throughout
+   LAYOUT: pink header band with page tabs, market toggle + currency dropdown, price rows, budget line, then includes / add-ons / bundles / booking */
+:root{color-scheme:light;--bg:#FFF8EA;--ink:#4A0D20;--soft:#7a4a58;--card:#ffffff;--line:#efdfc9;--pink:#FBB9E6;--yellow:#FFF36B;--blue:#B9E4F6}
+@media (prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#1c0810;--ink:#FFF8EA;--soft:#d9bfc7;--card:#2a0f19;--line:#47202d;--pink:#5a1f3c;--yellow:#4d4710;--blue:#173f50;color-scheme:dark}}
+:root[data-theme=dark]{--bg:#1c0810;--ink:#FFF8EA;--soft:#d9bfc7;--card:#2a0f19;--line:#47202d;--pink:#5a1f3c;--yellow:#4d4710;--blue:#173f50;color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+[hidden]{display:none!important}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Lexend,system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:clip}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header{background:var(--pink)}
+header .wrap{padding-block:clamp(32px,6vw,64px) clamp(28px,4vw,44px);display:grid;gap:24px}
+.top{display:flex;flex-wrap:wrap;gap:16px 40px;align-items:flex-end;justify-content:space-between}
+h1{font-size:clamp(36px,6vw,56px);line-height:1.02;font-weight:700;margin:0;letter-spacing:-.02em}
+.tag{margin:10px 0 0;font-size:18px}
+.year{font-size:14px;font-weight:500;border:1.5px solid var(--ink);border-radius:999px;padding:6px 14px;white-space:nowrap}
+.tabs{display:flex;gap:6px}
+.tabs button{font:inherit;color:var(--ink);background:transparent;border:0;border-radius:18px 18px 0 0;min-height:56px;padding:12px clamp(14px,3vw,26px);cursor:pointer;text-align:left;line-height:1.2}
+.tabs button b{display:block;font-size:17px;font-weight:600}
+.tabs button span{display:block;font-size:13px;opacity:.8;margin-top:2px}
+.tabs button[aria-selected=true]{background:var(--bg)}
+button:focus-visible,select:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.bar{padding-block:28px 6px;display:flex;flex-wrap:wrap;gap:14px 20px;align-items:flex-end}
+.seg{display:inline-grid;grid-template-columns:1fr 1fr;background:var(--card);border:1.5px solid var(--ink);border-radius:999px;padding:4px;width:min(100%,460px)}
+.seg button{font:inherit;font-size:15px;font-weight:500;color:var(--ink);background:none;border:0;border-radius:999px;min-height:44px;padding:8px 12px;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.pick{display:grid;gap:4px;width:min(100%,300px)}
+.pick label{font-size:13px;font-weight:500;color:var(--soft)}
+.pick select{font:inherit;font-size:16px;color:var(--ink);background:var(--card);border:1.5px solid var(--ink);border-radius:14px;min-height:48px;padding:8px 40px 8px 14px;appearance:none;-webkit-appearance:none;cursor:pointer;background-image:linear-gradient(45deg,transparent 50%,currentColor 50%),linear-gradient(135deg,currentColor 50%,transparent 50%);background-position:calc(100% - 20px) 50%,calc(100% - 14px) 50%;background-size:6px 6px;background-repeat:no-repeat}
+.who{margin:4px 0 0;color:var(--soft);font-size:15px;max-width:62ch;flex-basis:100%}
+.intro{margin:18px 0 0;font-size:18px;max-width:60ch}
+.list{display:grid;gap:14px;padding-block:18px 6px}
+.row{background:var(--card);border:1.5px solid var(--line);border-radius:20px;padding:22px clamp(18px,3vw,28px);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1.4fr);gap:16px 28px;align-items:center}
+.row h2{font-size:20px;line-height:1.25;font-weight:600;margin:0}
+.row p{margin:6px 0 0;color:var(--soft);font-size:15px}
+.row p.uses{margin:14px 0 4px;color:var(--ink);font-size:14px}
+ul.uses{margin:0;padding-left:18px;font-size:14px;color:var(--soft);display:grid;gap:2px}
+.badge{display:inline-block;font-size:12px;font-weight:600;border-radius:999px;padding:3px 10px;margin-top:10px;background:var(--blue);white-space:nowrap}
+.badge.real{background:var(--yellow)}
+.opts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.opt{border-left:3px solid var(--pink);padding:2px 0 2px 14px}
+.opt span{display:block;font-size:14px;color:var(--soft)}
+.opt small{display:block;font-size:13px;color:var(--soft);margin-top:2px}
+.opt b{display:block;font-size:clamp(24px,3.4vw,32px);font-weight:700;line-height:1.15;white-space:nowrap;font-variant-numeric:tabular-nums}
+.budget{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;justify-content:space-between;background:var(--ink);color:var(--bg);border-radius:20px;padding:18px clamp(18px,3vw,28px);margin-top:4px}
+.budget b{font-size:18px;font-weight:600}
+.budget a{color:var(--bg);font-weight:500;text-underline-offset:4px;overflow-wrap:anywhere}
+.note{margin:14px 0 0;padding:14px 18px;border-radius:16px;border:1.5px dashed var(--ink);font-size:15px}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;padding-block:14px}
+.block{border-radius:20px;padding:24px clamp(18px,3vw,28px)}
+.block h3{font-size:20px;font-weight:600;margin:0 0 12px}
+.y{background:var(--yellow)}.b{background:var(--blue)}.c{background:var(--card);border:1.5px solid var(--line)}
+ul.clean{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+ul.clean li{display:flex;justify-content:space-between;gap:16px;align-items:baseline;border-bottom:1px solid color-mix(in srgb,var(--ink) 18%,transparent);padding-bottom:8px}
+ul.clean li:last-child{border-bottom:0;padding-bottom:0}
+ul.clean em{font-style:normal;font-weight:600;text-align:right}
+footer{background:var(--ink);color:var(--bg);margin-top:30px}
+footer .wrap{padding-block:clamp(32px,5vw,56px);display:flex;flex-wrap:wrap;gap:16px 32px;align-items:center;justify-content:space-between}
+footer h2{font-size:clamp(26px,4vw,36px);margin:0;font-weight:700;line-height:1.1}
+footer a{color:var(--bg);font-size:18px;font-weight:500;text-underline-offset:4px;overflow-wrap:anywhere}
+footer small{display:block;opacity:.75;font-size:14px;margin-top:4px}
+@media (max-width:760px){.row{grid-template-columns:1fr}.grid2{grid-template-columns:1fr}}
+@media (max-width:440px){.seg button{font-size:14px;padding:8px 6px}.tabs button span{display:none}}
+@media (max-width:360px){.opts{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:no-preference){.opt b{transition:opacity .2s}.fade .opt b{opacity:.2}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <h1>Faith Samuel</h1>
+        <p class="tag">UGC video for brands, with me on camera</p>
+      </div>
+      <span class="year">UGC rate card 2026</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <p class="intro" id="intro"></p>
+
+  <div class="bar">
+    <div class="seg" role="group" aria-label="Choose your market">
+      <button id="m-int" type="button" aria-pressed="true">International · USD</button>
+      <button id="m-afr" type="button" aria-pressed="false">Africa · local currency</button>
+    </div>
+    <div class="pick" id="pick" hidden>
+      <label for="cur">Your currency</label>
+      <select id="cur"></select>
+    </div>
+    <p class="who" id="who"></p>
+  </div>
+
+  <section class="list" id="list" aria-live="polite"></section>
+
+  <div class="budget">
+    <b>Have a budget in mind?</b>
+    <span>Send me a message with it and we'll work something out: <a href="mailto:faithsamuel46@gmail.com">faithsamuel46@gmail.com</a></span>
+  </div>
+
+  <p class="note" id="fx" hidden></p>
+  <p class="note">Want the whole video made with AI, with no filming? <a href="https://faithsamie.github.io/rate-card/" style="color:var(--ink);font-weight:600;text-underline-offset:4px">See my AI video rates</a>. Want it posted on my own page? <a href="https://faithsamie.github.io/media-kit/#rates" style="color:var(--ink);font-weight:600;text-underline-offset:4px">See my media kit</a>.</p>
+
+  <div class="grid2">
+    <section class="block y">
+      <h3>Every rate includes</h3>
+      <ul class="clean">
+        <li><span>Revisions</span><em>1 round</em></li>
+        <li><span>Format</span><em>9:16 vertical</em></li>
+        <li><span>Turnaround</span><em>3–5 working days</em></li>
+        <li><span>Posting</span><em>Organic use</em></li>
+      </ul>
+    </section>
+    <section class="block b">
+      <h3>Add-ons</h3>
+      <ul class="clean" id="addons"></ul>
+    </section>
+  </div>
+
+  <div class="grid2">
+    <section class="block c">
+      <h3>Bundles</h3>
+      <ul class="clean">
+        <li><span>3 videos</span><em>About 10% off each</em></li>
+        <li><span>5 videos</span><em>About 15% off each</em></li>
+        <li><span>Mixed bundle</span><em>Quoted on request</em></li>
+      </ul>
+    </section>
+    <section class="block c">
+      <h3>Booking</h3>
+      <ul class="clean">
+        <li><span>To confirm</span><em>50% deposit</em></li>
+        <li><span>On delivery</span><em>Balance paid</em></li>
+        <li><span>Over 1 minute</span><em>Quoted separately</em></li>
+      </ul>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <h2>Book your project</h2>
+    <div>
+      <a href="mailto:faithsamuel46@gmail.com">faithsamuel46@gmail.com</a>
+      <small>Send your brief and I'll reply with a confirmed quote.</small>
+    </div>
+  </div>
+</footer>
+
+<script>
+{
+const PAGES={
+  ugc:{
+    intro:'I film myself using and talking about your product, then edit it into a ready-to-post video. Your audience sees a real person, my face and my voice.',
+    rows:[
+      {name:'UGC video',note:'Me on camera, talking about your product',opts:[{l:'30 seconds',ngn:80000,usd:100},{l:'1 minute',ngn:150000,usd:200}]}
+    ]
+  },
+  ai:{
+    intro:'I create the whole video with AI: characters, scenes and voice. No filming needed on your side. Pick the look you want.',
+    rows:[
+      {name:'Standard AI video',note:'Made fully with AI. Clean and clear, but viewers can tell it is AI.',uses:['Explainer videos','AI UGC: an AI presenter talks about your product','Product and feature walkthroughs','Social media posts'],badge:'Looks AI',opts:[{l:'30 seconds',ngn:25000,usd:30},{l:'1 minute',ngn:40000,usd:50}]},
+      {name:'Realistic and cinematic AI video',note:'Made fully with AI, but it looks like real filmed footage, with lifelike people and film-quality shots. Made with Seedance 2.5.',uses:['AI UGC that looks like a real person filmed it','Story-led videos and short scenes','Lifestyle and product-in-use shots','Premium brand content'],badge:'Looks real',real:true,opts:[{l:'30 seconds',ngn:50000,usd:80},{l:'1 minute',ngn:85000,usd:150}]},
+      {name:'AI commercial or product campaign',note:'Up to 30 seconds, built to sell your product.',opts:[{l:'Standard look',s:'Looks AI',ngn:50000,usd:100},{l:'Realistic, cinematic look',s:'Looks real',ngn:100000,usd:200}]}
+    ]
+  }
+};
+const ADDONS=[
+  {l:'Scripting',ngn:15000,usd:20},
+  {l:'Rush delivery',ngn:10000,usd:15},
+  {l:'Extra revisions',t:'Quoted per job'},
+  {l:'Usage and paid-ad rights',t:'Quoted separately'},
+  {l:'Raw files',t:'On request'}
+];
+/* Approximate value of ₦1 in each currency, as of 27 November 2026. Update these to refresh prices. */
+const FX_DATE='27 November 2026';
+const CUR=[
+  {c:'NGN',sym:'₦',n:'Nigerian naira',r:1,step:1000},
+  {c:'GHS',sym:'GH₵',n:'Ghanaian cedi',r:0.0087,step:10},
+  {c:'KES',sym:'KSh ',n:'Kenyan shilling',r:0.0956,step:100},
+  {c:'ZAR',sym:'R',n:'South African rand',r:0.0121,step:10},
+  {c:'XOF',sym:'CFA ',n:'West African CFA franc',r:0.42,step:500},
+  {c:'XAF',sym:'FCFA ',n:'Central African CFA franc',r:0.42,step:500},
+  {c:'EGP',sym:'E£',n:'Egyptian pound',r:0.0407,step:50},
+  {c:'MAD',sym:'MAD ',n:'Moroccan dirham',r:0.0072,step:10},
+  {c:'ZMW',sym:'K',n:'Zambian kwacha',r:0.0152,step:10}
+];
+const fmt=new Intl.NumberFormat('en-US');
+const esc=s=>String(s).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+const $=id=>document.getElementById(id);
+const page='ugc';let market='int',cur='NGN';
+
+$('cur').innerHTML=CUR.map(k=>`<option value="${esc(k.c)}">${esc(k.n)} (${esc(k.c)})</option>`).join('');
+
+function price(o){
+  if(market==='int')return '$'+fmt.format(o.usd);
+  const k=CUR.find(x=>x.c===cur);
+  return k.sym+fmt.format(Math.ceil(o.ngn*k.r/k.step)*k.step);
+}
+function render(){
+  const P=PAGES[page];
+  $('intro').textContent=P.intro;
+  $('list').innerHTML=P.rows.map(s=>`<article class="row"><div><h2>${esc(s.name)}</h2><p>${esc(s.note)}</p>${s.uses?`<p class="uses"><strong>Good for</strong></p><ul class="uses">${s.uses.map(u=>`<li>${esc(u)}</li>`).join('')}</ul>`:''}${s.badge?`<span class="badge${s.real?' real':''}">${esc(s.badge)}</span>`:''}</div><div class="opts">${s.opts.map(o=>`<div class="opt"><span>${esc(o.l)}</span><b>${esc(price(o))}</b>${o.s?`<small>${esc(o.s)}</small>`:''}</div>`).join('')}</div></article>`).join('');
+  $('addons').innerHTML=ADDONS.map(a=>`<li><span>${esc(a.l)}</span><em>${esc(a.t||'+'+price(a))}</em></li>`).join('');
+  $('m-int').setAttribute('aria-pressed',market==='int');
+  $('m-afr').setAttribute('aria-pressed',market==='afr');
+  $('pick').hidden=market!=='afr';
+  $('fx').hidden=market!=='afr';
+  $('cur').value=cur;
+  $('who').textContent=market==='int'
+    ?'For brands in the US, UK, Europe and everywhere else. Priced in US dollars.'
+    :'For brands across Africa. Choose your currency and the prices update.';
+  const k=CUR.find(x=>x.c===cur);
+  $('fx').textContent=cur==='NGN'
+    ?`Prices in naira. Clients elsewhere in Africa can choose their own currency above. Don't see yours? Ask and I'll quote it.`
+    :`Prices in ${k.n} are converted from my naira rates at approximate exchange rates (${FX_DATE}). I confirm the final amount in your currency before you book. Don't see your currency? Ask and I'll quote it.`;
+}
+function setHash(){
+  const h=market==='int'?'international':(cur==='NGN'?'africa':'africa-'+cur.toLowerCase());
+  try{history.replaceState(null,'','#'+h)}catch(e){try{location.hash=h}catch(e2){}}
+}
+function fromHash(){
+  const parts=(location.hash||'').slice(1).toLowerCase().split('-').filter(Boolean);
+  if(parts[0]==='ugc'||parts[0]==='ai')parts.shift();
+  if(parts[0]==='africa'){
+    market='afr';
+    const k=parts[1]&&CUR.find(x=>x.c.toLowerCase()===parts[1]);
+    cur=k?k.c:'NGN';
+  }else if(parts[0]==='international'){market='int'}
+  render();
+}
+function swap(fn){
+  const l=$('list');l.classList.add('fade');
+  setTimeout(()=>{fn();render();setHash();l.classList.remove('fade')},120);
+}
+$('m-int').addEventListener('click',()=>swap(()=>{market='int'}));
+$('m-afr').addEventListener('click',()=>swap(()=>{market='afr'}));
+$('cur').addEventListener('change',e=>swap(()=>{cur=e.target.value}));
+window.addEventListener('hashchange',fromHash);
+fromHash();
+}
+</script>
+</body>
+</html>
